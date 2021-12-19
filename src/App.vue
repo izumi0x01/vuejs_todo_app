@@ -1,28 +1,34 @@
 <template>
-  <div id="TodoList">
-    <TodoItem />
+  <div>
+      <TodoInput @eventAddNewTask="OnAddNewTask" />
+      <ul v-for="Task in TaskList" :key="Task.ID" >
+          <TodoItem :ID="Task.ID" :Content="Task.Content"/>
+      </ul>
   </div>
 </template>
 <script>
+  import TodoInput from './components/TodoInput.vue'
   import TodoItem from './components/TodoItem.vue'
 
   export default{
-    name: 'TodoList',
-    components: {
-      TodoItem
+    name: "home",
+    components:{
+      TodoInput,
+      TodoItem,
     },
-    data: function(){
-      return{
-        todos: [],
+    data(){
+      return {
+        TaskList: []
       }
     },
     methods:{
-      AddTodo: function(){
-        this.todos.push({content: this.todo})
-        this.todo=''
-      },
-      RemoveTodo: function(index){
-        this.todos.splice(index, 1)
+      OnAddNewTask(NewTaskContent){
+          const NewTask = 
+          {
+            ID: this.TaskList.length,
+            Content: NewTaskContent
+          }
+          this.TaskList.push(NewTask)
       }
     }
   } 

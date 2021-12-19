@@ -1,23 +1,25 @@
 <template>
-  <div todo="TodoItem">
-    <li>{{todo}}</li>
+  <div>
+    <li>{{Content}}</li>
   </div>
 </template>
+
 <script>
 
-let TodoItem = {
-  props: {
-    todo: String
-  },
-  data: function(){
-    return{
-      todo: ""
-      }
-  },
+export default{
+  name: "todoitem",
+  props:{
+    ID: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    Content: {
+      type: String,
+      required: true,
+      default: ""
+    }
+  }
 }
 
-new Vue({
-  name: "TodoItem",
-  "todo-item": TodoItem
-})
 </script>
